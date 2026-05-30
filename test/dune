@@ -1,0 +1,5 @@
+(test
+ (name test_ocaml_99_problems)
+ (libraries ocaml_99_problems)
+ (preprocess
+  (pps ppx_jane)))
