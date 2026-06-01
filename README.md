@@ -15,7 +15,8 @@ Run tests
 dune test
 ```
 
-Implementaion can be found in [lib/impl.ml](lib/impl.ml).
+Implementaion can be found in
+[lib/ocaml_99_problems.ml](lib/ocaml_99_problems.ml).
 
 You can test functions in utop
 
@@ -23,4 +24,11 @@ You can test functions in utop
 > dune utop
 utop # last [ "a"; "b"; "c"; "d" ];;
 - : string option = Some "d"
+```
+
+If you want to see documenatation
+
+```bash
+opam install odoc
+dune ocaml doc
 ```
