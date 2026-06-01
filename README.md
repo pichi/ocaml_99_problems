@@ -32,3 +32,9 @@ If you want to see documenatation
 opam install odoc
 dune ocaml doc
 ```
+
+Run benchmark
+
+```bash
+dune build @bench
+```

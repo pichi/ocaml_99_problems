@@ -1,0 +1,10 @@
+(executable
+ (name bench)
+ (libraries ocaml_99_problems core_bench))
+
+(rule
+ (alias bench)
+ (deps bench.exe (universe))
+ (action
+ (no-infer
+   (run ./bench.exe -ascii -quota 10 +time cycles alloc gc percentage speedup))))
