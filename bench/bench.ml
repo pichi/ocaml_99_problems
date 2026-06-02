@@ -40,8 +40,6 @@ let () =
   if not !Sys.interactive
   then (
     let list = rand_list 1000 in
-    let make_test (n, f) =
-      Bench.Test.create ~name:n (fun () -> ignore (f list))
-    in
+    let make_test (n, f) = Bench.Test.create ~name:n (fun () -> f list) in
     last_tests |> List.map ~f:make_test |> bench)
 ;;
