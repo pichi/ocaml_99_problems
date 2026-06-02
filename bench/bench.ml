@@ -16,11 +16,18 @@ let is_empty = function
 ;;
 
 let rec last_m = function
-  | x :: xs -> if is_empty xs then Some x else last_p xs
+  | x :: xs -> if is_empty xs then Some x else last_m xs
   | [] -> None
 ;;
 
-let last_tests = [ "last_p", last_p; "last", O.last; "last_m", last_m ]
+let rec last_o = function
+  | x :: xs -> if List.is_empty xs then Some x else last_o xs
+  | [] -> None
+;;
+
+let last_tests =
+  [ "last_p", last_p; "last", O.last; "last_m", last_m; "last_o", last_o ]
+;;
 
 let rec rand_list = function
   | n when n > 0 -> Random.int 10000 :: rand_list (n - 1)
