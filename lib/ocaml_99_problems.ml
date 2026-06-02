@@ -1,9 +1,9 @@
-open Base
+open! Core
 
 let rec last = function
+  | [] -> None
   | [ x ] -> Some x
   | x :: xs -> last xs
-  | [] -> None
 ;;
 
 let%expect_test "test last Some" =

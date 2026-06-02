@@ -2,6 +2,6 @@
  (name ocaml_99_problems)
  (public_name ocaml_99_problems)
  (inline_tests)
- (libraries base stdio)
+ (libraries core stdio)
  (preprocess
   (pps ppx_jane)))
