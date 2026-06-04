@@ -35,3 +35,16 @@ val last_two : 'a list -> ('a * 'a) option
   last_two_n       1.00     2.36us   -0.95% +1.23%      5.66kc     5.00w   0.02e-3      100.00%      1.02
 ]} *)
 val last_two_n : 'a list -> ('a * 'a) option
+
+(** {2 3. N'th Element of a List} *)
+
+(**
+Find the N'th element of a list.
+
+{[
+# at 2 ["a"; "b"; "c"; "d"; "e"];;
+- : string option = Some "c"
+# at 2 ["a"];;
+- : string option = None
+]} *)
+val at : int -> 'a list -> 'a option

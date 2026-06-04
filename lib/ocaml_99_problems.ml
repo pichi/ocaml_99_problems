@@ -57,3 +57,22 @@ let%expect_test "test last_two None" =
   Stdio.print_s [%sexp (result : (string * string) Option.t)];
   [%expect {| () |}]
 ;;
+
+let rec at n list =
+  match n, list with
+  | 0, x :: _ -> Some x
+  | n, _ :: xs when n > 0 -> at (n - 1) xs
+  | _, _ -> None
+;;
+
+let%expect_test "test last_two Some" =
+  let result = at 2 [ "a"; "b"; "c"; "d"; "e" ] in
+  Stdio.print_s [%sexp (result : string Option.t)];
+  [%expect {| (c) |}]
+;;
+
+let%expect_test "test last_two None" =
+  let result = at 2 [ "a" ] in
+  Stdio.print_s [%sexp (result : string Option.t)];
+  [%expect {| () |}]
+;;
