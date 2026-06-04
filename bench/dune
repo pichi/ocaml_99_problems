@@ -7,14 +7,4 @@
  (deps bench.exe (universe))
  (action
   (no-infer
-   (run
-    ./bench.exe
-    -ascii
-    -quota
-    3
-    +time
-    cycles
-    alloc
-    gc
-    percentage
-    speedup))))
+   (run ./bench.exe -ascii -quota 3 +time cycles alloc gc percentage speedup))))
