@@ -3,31 +3,7 @@ open Core_bench
 module O = Ocaml_99_problems
 
 let () = Random.self_init ()
-
-let rec last_p = function
-  | [ x ] -> Some x
-  | x :: xs -> last_p xs
-  | [] -> None
-;;
-
-let is_empty = function
-  | _ :: _ -> false
-  | _ -> true
-;;
-
-let rec last_m = function
-  | x :: xs -> if is_empty xs then Some x else last_m xs
-  | [] -> None
-;;
-
-let rec last_o = function
-  | x :: xs -> if List.is_empty xs then Some x else last_o xs
-  | [] -> None
-;;
-
-let last_tests =
-  [ "last_p", last_p; "last", O.last; "last_m", last_m; "last_o", last_o ]
-;;
+let last_tests = [ "last_two", O.last_two; "last_two_n", O.last_two_n ]
 
 let rec rand_list = function
   | n when n > 0 -> Random.int 10000 :: rand_list (n - 1)
