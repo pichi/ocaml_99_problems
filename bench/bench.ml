@@ -15,7 +15,8 @@ let bench tests = Command_unix.run @@ Bench.make_command @@ tests
 let () =
   if not !Sys.interactive
   then (
-    let list = rand_list 1000 in
-    let make_test (n, f) = Bench.Test.create ~name:n (fun () -> f 999 list) in
+    let n = 1000 in
+    let list = rand_list (n + 1) in
+    let make_test (name, f) = Bench.Test.create ~name (fun () -> f n list) in
     last_tests |> List.map ~f:make_test |> bench)
 ;;
