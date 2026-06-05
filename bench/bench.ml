@@ -5,7 +5,7 @@ module O = Ocaml_99_problems
 let () = Random.self_init ()
 let last_tests = [ "at", O.at ]
 
-let rec rand_list = function
+let[@tail_mod_cons] rec rand_list = function
   | n when n > 0 -> Random.int 10000 :: rand_list (n - 1)
   | _ -> []
 ;;
