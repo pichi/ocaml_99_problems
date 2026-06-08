@@ -36,6 +36,12 @@ val last_two : 'a list -> ('a * 'a) option
 ]} *)
 val last_two_n : 'a list -> ('a * 'a) option
 
+(**/**)
+
+val p02_all : (string * (module P02_last_two.Sig)) list
+
+(**/**)
+
 (** {2 3. N'th Element of a List} *)
 
 (**
