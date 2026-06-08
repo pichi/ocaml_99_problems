@@ -24,7 +24,7 @@ module Naive = struct
   ;;
 end
 
-let all = [ "Naive", (module Naive : Sig); "Loop", (module Loop : Sig) ]
+let all = [ "Loop", (module Loop : Sig); "Naive", (module Naive : Sig) ]
 
 module Make_Test (M : Sig) = struct
   let%expect_test "P02 test last two" =

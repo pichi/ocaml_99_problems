@@ -1,8 +1,12 @@
 open! Core
 
 let last = P01_last.last
+
+module P02_last_two = P02_last_two
+
 let last_two = P02_last_two.Loop.last_two
 let last_two_n = P02_last_two.Naive.last_two
+let p02_all = P02_last_two.all
 
 let rec at n list =
   match n, list with
