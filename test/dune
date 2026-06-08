@@ -1,7 +1,5 @@
-(library
+(test
  (name test_problems)
- (libraries ocaml_99_problems core)
- (inline_tests
-  (backend ppx_expect))
+ (libraries ocaml_99_problems)
  (preprocess
   (pps ppx_jane -no-check)))
