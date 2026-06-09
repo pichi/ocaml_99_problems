@@ -17,3 +17,16 @@ let%expect_test "P01 test last" =
     List: (d)
     |}]
 ;;
+
+let%test_unit "P01 quickcheck last = hd rev" =
+  Quickcheck.test
+    ~sexp_of:[%sexp_of: int list]
+    ~shrinker:[%quickcheck.shrinker: int list]
+    ~examples:[ []; [ 1 ]; [ 2; 3 ] ]
+    ~trials:C.qc_trials
+    [%quickcheck.generator: int list]
+    ~f:(fun list ->
+      let expected = List.hd (List.rev list) in
+      let actual = last list in
+      [%test_eq: int option] actual expected)
+;;
