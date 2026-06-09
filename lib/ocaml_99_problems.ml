@@ -4,8 +4,7 @@ let last = P01_last.last
 
 module type P02_Sig = P02_last_two.Sig
 
-let last_two = P02_last_two.Loop.last_two
-let last_two_n = P02_last_two.Naive.last_two
+let last_two = P02_last_two.LoopLambda.last_two
 let p02_all = P02_last_two.all
 
 let rec at n list =

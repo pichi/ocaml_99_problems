@@ -16,6 +16,18 @@ module Loop = struct
   ;;
 end
 
+module LoopLambda = struct
+  let last_two =
+    let rec lt a b = function
+      | [] -> Some (a, b)
+      | c :: rest -> lt b c rest
+    in
+    function
+    | [] | [ _ ] -> None
+    | x1 :: x2 :: rest -> lt x1 x2 rest
+  ;;
+end
+
 module Naive = struct
   let rec last_two = function
     | [] | [ _ ] -> None
@@ -24,7 +36,12 @@ module Naive = struct
   ;;
 end
 
-let all = [ "Loop", (module Loop : Sig); "Naive", (module Naive : Sig) ]
+let all =
+  [ "Loop", (module Loop : Sig)
+  ; "LoopLambda", (module LoopLambda)
+  ; "Naive", (module Naive)
+  ]
+;;
 
 module Make_Test (M : Sig) = struct
   let%expect_test "P02 test last two" =
@@ -46,4 +63,5 @@ module Make_Test (M : Sig) = struct
 end
 
 module T1 = Make_Test (Loop)
-module T2 = Make_Test (Naive)
+module T2 = Make_Test (LoopLambda)
+module T3 = Make_Test (Naive)

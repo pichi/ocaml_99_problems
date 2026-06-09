@@ -2,7 +2,7 @@
 
 (name ocaml_99_problems)
 
-(generate_opam_files true)
+;(generate_opam_files true)
 
 (source
  (github pichi/ocaml_99_problems))

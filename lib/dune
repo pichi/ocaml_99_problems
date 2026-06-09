@@ -3,5 +3,7 @@
  (public_name ocaml_99_problems)
  (inline_tests)
  (libraries core stdio)
+ ; (flags :standard -dlambda) ; see internal intepretation for interpreter
+ ; (ocamlopt_flags :standard -dlinear) ; see internal interpretation for native code
  (preprocess
   (pps ppx_jane -no-check)))

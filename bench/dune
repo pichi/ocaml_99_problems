@@ -1,6 +1,10 @@
 (executable
  (name bench)
+ (modes byte exe)
  (libraries ocaml_99_problems core_bench))
+
+; for interpreted benchmark use
+; dune exec bench/bench.bc -- -ascii -quota 3 +time cycles alloc gc percentage speedup
 
 (rule
  (alias bench)
