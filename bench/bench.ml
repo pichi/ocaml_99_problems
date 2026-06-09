@@ -10,19 +10,34 @@ let[@tail_mod_cons] rec rand_list = function
   | _ -> []
 ;;
 
+(* lay data in reverse order in memomry *)
+let rec rand_list_rev = function
+  | n when n > 0 -> Random.int 10000 :: rand_list_rev (n - 1)
+  | _ -> []
+;;
+
 let bench tests = Command_unix.run @@ Bench.make_command @@ tests
 
 let () =
   if not !Sys.interactive
   then (
     let n = 1000 in
-    let list = rand_list (n + 1) in
-    let open Bench.Test in
-    [ create ~name:"last" (fun () -> O.last list) ] |> bench;
+    let lists =
+      List.map
+        ~f:(fun (p, f) -> p, f n)
+        [ "", rand_list; " rev", rand_list_rev ]
+    in
+    let n = n - 1 in
+    let make_tests (n, f) =
+      List.map
+        ~f:(fun (p, l) -> Bench.Test.create ~name:(n ^ p) (fun () -> f l))
+        lists
+    in
+    let bench tests = bench @@ List.concat_map ~f:make_tests tests in
+    [ "last", O.last ] |> bench;
     let btc (name, (module M : O.P02_last_two.Sig)) =
-      let name = name ^ " last_two" in
-      create ~name (fun () -> M.last_two list)
+      name ^ " last_two", M.last_two
     in
     O.p02_all |> List.map ~f:btc |> bench;
-    [ create ~name:"at" (fun () -> O.at n list) ] |> bench)
+    [ "at", O.at n ] |> bench)
 ;;
