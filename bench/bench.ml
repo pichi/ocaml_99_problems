@@ -3,7 +3,6 @@ open Core_bench
 module O = Ocaml_99_problems
 
 let () = Random.self_init ()
-let last_tests = [ "at", O.at ]
 
 let[@tail_mod_cons] rec rand_list = function
   | n when n > 0 -> Random.int 10000 :: rand_list (n - 1)
@@ -25,7 +24,7 @@ let () =
     let lists =
       List.map
         ~f:(fun (p, f) -> p, f n)
-        [ "", rand_list; " rev", rand_list_rev ]
+        [ "", rand_list; " rev_data", rand_list_rev ]
     in
     let n = n - 1 in
     let make_tests (n, f) =
