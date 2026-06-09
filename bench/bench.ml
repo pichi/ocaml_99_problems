@@ -35,9 +35,7 @@ let () =
     in
     let bench tests = bench @@ List.concat_map ~f:make_tests tests in
     [ "last", O.last ] |> bench;
-    let btc (name, (module M : O.P02_last_two.Sig)) =
-      name ^ " last_two", M.last_two
-    in
+    let btc (name, (module M : O.P02_Sig)) = name ^ ".last_two", M.last_two in
     O.p02_all |> List.map ~f:btc |> bench;
     [ "at", O.at n ] |> bench)
 ;;

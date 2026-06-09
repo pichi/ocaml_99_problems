@@ -38,13 +38,11 @@ val last_two_n : 'a list -> ('a * 'a) option
 
 (**/**)
 
-module P02_last_two : sig
-  module type Sig = sig
-    val last_two : 'a list -> ('a * 'a) option
-  end
+module type P02_Sig = sig
+  val last_two : 'a list -> ('a * 'a) option
 end
 
-val p02_all : (string * (module P02_last_two.Sig)) list
+val p02_all : (string * (module P02_Sig)) list
 
 (**/**)
 
