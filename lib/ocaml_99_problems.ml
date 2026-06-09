@@ -1,11 +1,11 @@
 open! Core
 
-let last = P01_last.last
+let last = P01.last
 
-module type P02_Sig = P02_last_two.Sig
+module type P02_Sig = P02.Sig
 
-let last_two = P02_last_two.LoopLambda.last_two
-let p02_all = P02_last_two.all
+let last_two = P02.LoopLambda.last_two
+let p02_all = P02.all
 
 let rec at n list =
   match n, list with
