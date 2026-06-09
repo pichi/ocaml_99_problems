@@ -71,3 +71,9 @@ Run benchmark
 ```bash
 make bench
 ```
+
+Benchmark interpreted code
+
+```bash
+make bench-bytes
+```

@@ -1,4 +1,4 @@
-.PHONY: all build run test doc doc-open watch clean fmt fmt-check bench
+.PHONY: all build run test doc doc-open watch clean fmt fmt-check bench bench-bytes
 
 all: build
 
@@ -33,3 +33,6 @@ fmt-check:
 
 bench:
 	dune build @bench
+
+bench-bytes:
+	dune exec bench/bench.bc -- -ascii -quota 3 +time cycles alloc gc percentage speedup
