@@ -1,4 +1,4 @@
-.PHONY: all build run test watch clean fmt fmt-check bench
+.PHONY: all build run test doc watch clean fmt fmt-check bench
 
 all: build
 
@@ -11,7 +11,10 @@ run:
 test:
 	dune runtest $(TEST_ARGS)
 
-TARGET ?= build
+doc:
+	dune build @doc
+
+TARGET ?= build @check
 watch:
 	dune $(TARGET) --watch
 
