@@ -1,4 +1,4 @@
-.PHONY: all build run test doc watch clean fmt fmt-check bench
+.PHONY: all build run test doc doc-open watch clean fmt fmt-check bench
 
 all: build
 
@@ -13,6 +13,9 @@ test:
 
 doc:
 	dune build @doc
+
+doc-open:
+	dune ocaml doc
 
 TARGET ?= build @check
 watch:
