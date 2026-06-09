@@ -17,6 +17,19 @@ For fancy documentaion
 opam install sherlodoc
 ```
 
+For formating
+
+```bash
+opam install ocamlformat.0.29.0
+```
+
+If you want pre commit hook
+
+```bash
+echo "exec make fmt-check" > .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
 ## Usage
 
 Run tests
